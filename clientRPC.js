@@ -62,11 +62,11 @@ export default class ClientRPC {
                     },
                     assets: {
                         large_image: avatar,
-                        large_text: album,
+                        large_text: album ? album : title,
                     },
                     buttons: [
                         {label: 'Écouter', url: url},
-                        {label: 'Github', url: 'https://github.com/nys-Fleinz'},
+                        {label: 'Github', url: 'https://github.com/nys-Fleinz/DiscordPresenceMusic'},
                     ]
                 }
             },

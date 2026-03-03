@@ -18,6 +18,11 @@ wss.on('connection', (ws, socket, req) => {
     console.log('Extension web connecté.');
     ws.on("message", (rawData) => {
         const data = JSON.parse(rawData);
+        if(!data) {
+            console.log("CLOSED WINDOW");
+            client.clearActivity();
+            return;
+        }
         clearTimeout(debouncer);
         debouncer = setTimeout(() => {
             if(data.state === "PLAYING") {
