@@ -17,7 +17,12 @@ app.use(express.json());
 wss.on('connection', (ws, socket, req) => {
     console.log('Extension web connecté.');
     ws.on("message", (rawData) => {
-        const data = JSON.parse(rawData);
+        let data = null;
+        try {
+            data = JSON.parse(rawData);
+        } catch (error) {
+            console.log("Invalid JSON");
+        }
         if(!data) {
             console.log("CLOSED WINDOW");
             client.clearActivity();
